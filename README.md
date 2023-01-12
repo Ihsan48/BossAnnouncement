@@ -13,7 +13,7 @@ The plugin gives you several options of how you can configure the texts that app
 | worlds | An array of the level names in which the mode configuration applies |
 
 Poggit download/information:
-[![Poggit-CI](https://poggit.pmmp.io/ci.badge/thebigsmileXD/BossAnnouncement/BossAnnouncement)](https://poggit.pmmp.io/ci/thebigsmileXD/BossAnnouncement/BossAnnouncement)
+[![Poggit-CI](https://poggit.pmmp.io/ci.badge/Ihsan48/BossAnnouncement/BossAnnouncement)](https://poggit.pmmp.io/ci/Ihsan48/BossAnnouncement/BossAnnouncement)
 
 ## Information
 This plugin uses the [apibossbar](https://github.com/thebigsmileXD/apibossbar) virion
