@@ -15,6 +15,7 @@ use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\plugin\PluginException;
 use pocketmine\scheduler\Task;
+use pocketmine\scheduler\ClosureTask;
 use pocketmine\utils\TextFormat;
 use xenialdan\apibossbar\DiverseBossBar;
 
@@ -41,29 +42,26 @@ class Loader extends PluginBase implements Listener {
     /**
      * @throws PluginException
      */
-    public function onEnable(): void
-    {
+    public function onEnable() : void {
         $this->saveDefaultConfig();
         $this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
         $this->title = $this->getConfig()->get('head-message', '');
         $this->subTitles = $this->getConfig()->get('changing-messages', []);
         $this->changeSpeed = max(1, $this->getConfig()->get('change-speed', 1));
         $this->bar = (new DiverseBossBar())->setTitle($this->title);//setTitle needed?
-        $this->getScheduler()->scheduleRepeatingTask(new class extends Task {
-            public function onRun(int $currentTick): void
-            {
+        $this->getScheduler()->scheduleRepeatingTask(new ClosureTask(
+            function () {
                 Loader::getInstance()->i++;
                 if (Loader::getInstance()->i >= count(Loader::getInstance()->subTitles)) {
                     Loader::getInstance()->i = 0;
                 }
                 foreach (Loader::getInstance()->bar->getPlayers() as $player) {
-                    if ($player->isOnline() && Loader::getInstance()->isWorldEnabled($player->getLevel()->getName())) {
+                    if ($player->isOnline() && Loader::getInstance()->isWorldEnabled($player->getWorld()->getFolderName())) {
                         Loader::getInstance()->setText($player);
                     }
-
                 }
             }
-        }, 20 * $this->changeSpeed);
+        ), 20 * $this->changeSpeed);
     }
 
     /**
