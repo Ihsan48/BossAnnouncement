@@ -3,7 +3,7 @@ projects:
   BossAnnouncement:
     path: ""
     libs:
-    - src: xenialdan\apibossbar
+    - src: thebigsmilexd/apibossbar/apibossbar
       version: ^0.1.6
-      branch: PM4
+      branchs: PM4
 ...
