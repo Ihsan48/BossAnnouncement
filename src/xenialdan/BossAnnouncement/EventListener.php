@@ -2,18 +2,17 @@
 
 namespace xenialdan\BossAnnouncement;
 
-use pocketmine\event\entity\EntityLevelChangeEvent;
 use pocketmine\event\Listener;
+use pocketmine\event\entity\EntityTeleportEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;
-use pocketmine\Player;
+use pocketmine\player\Player;
 
-class EventListener implements Listener
-{
+class EventListener implements Listener {
 
     public function onJoin(PlayerJoinEvent $ev): void
     {
-        if (Loader::getInstance()->isWorldEnabled($ev->getPlayer()->getLevel()->getName())) {
+        if (Loader::getInstance()->isWorldEnabled($ev->getPlayer()->getWorld()->getFolderName())) {
             Loader::getInstance()->bar->addPlayer($ev->getPlayer());
         }
     }
@@ -23,14 +22,14 @@ class EventListener implements Listener
         Loader::getInstance()->bar->removePlayer($ev->getPlayer());
     }
 
-    public function onLevelChange(EntityLevelChangeEvent $ev): void
-    {
-        if ($ev->isCancelled() || !$ev->getEntity() instanceof Player) {
+    public function onLevelChange(EntityTeleportEvent  $ev) : void {
+        $entity = $ev->getEntity();
+        if ($ev->isCancelled() || !$entity instanceof Player) {
             return;
         }
-        Loader::getInstance()->bar->removePlayer($ev->getEntity());
-        if (Loader::getInstance()->isWorldEnabled($ev->getTarget()->getName())) {
-            Loader::getInstance()->bar->addPlayer($ev->getEntity());
+        Loader::getInstance()->bar->removePlayer($entity);
+        if (Loader::getInstance()->isWorldEnabled($ev->getTo()->getWorld()->getFolderName())) {
+            Loader::getInstance()->bar->addPlayer($entity);
         }
     }
 
