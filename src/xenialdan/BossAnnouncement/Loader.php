@@ -113,22 +113,17 @@ class Loader extends PluginBase implements Listener {
             return strtolower(TextFormat::clean($worldName));
         }, $this->getConfig()->get('worlds', []));
         $levelName = strtolower(TextFormat::clean($levelName));
-        switch ($mode) {
-            case 0://Every world
-                return true;
-                break;
-            case 1://Only config worlds
-                return in_array($levelName, $configWorlds, true);
-                break;
-            case 2://Exclude config worlds
-                return !in_array($levelName, $configWorlds, true);
-                break;
+        if ($mode === 0) {
+            return true; //Every world
+        } elseif($mode === 1) {
+            return in_array($levelName, $configWorlds, true); //Only config worlds
+        } elseif($mode === 2) {
+            return !in_array($levelName, $configWorlds, true); //Exclude config worlds
         }
         return false;
     }
 
-    public function onDeath(PlayerDeathEvent $ev)
-    {
+    public function onDeath(PlayerDeathEvent $ev) {
         $this->bar->removePlayer($ev->getPlayer())->addPlayer($ev->getPlayer());
     }
 }
