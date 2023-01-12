@@ -4,5 +4,6 @@ projects:
     path: ""
     libs:
     - src: thebigsmilexd/apibossbar/apibossbar
-      version: ^0.0.5
+      version: ^0.1.6
+      branch: PM4
 ...
