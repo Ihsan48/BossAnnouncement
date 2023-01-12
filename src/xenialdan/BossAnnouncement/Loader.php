@@ -48,7 +48,7 @@ class Loader extends PluginBase implements Listener {
         $this->title = $this->getConfig()->get('head-message', '');
         $this->subTitles = $this->getConfig()->get('changing-messages', []);
         $this->changeSpeed = max(1, $this->getConfig()->get('change-speed', 1));
-        $this->bar = (new DiverseBossBar())->setTitle($this->title);//setTitle needed?
+        $this->bar = new DiverseBossBar();//setTitle needed?
         $this->getScheduler()->scheduleRepeatingTask(new ClosureTask(
             function () {
                 Loader::getInstance()->i++;
