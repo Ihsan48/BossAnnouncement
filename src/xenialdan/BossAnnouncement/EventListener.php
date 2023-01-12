@@ -22,7 +22,7 @@ class EventListener implements Listener {
         Loader::getInstance()->bar->removePlayer($ev->getPlayer());
     }
 
-    public function onLevelChange(EntityTeleportEvent  $ev) : void {
+    public function onLevelChange(EntityTeleportEvent $ev) : void {
         $entity = $ev->getEntity();
         if ($ev->isCancelled() || !$entity instanceof Player) {
             return;
