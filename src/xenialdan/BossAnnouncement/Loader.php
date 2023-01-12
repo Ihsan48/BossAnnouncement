@@ -11,15 +11,15 @@ namespace xenialdan\BossAnnouncement;
 
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerDeathEvent;
-use pocketmine\Player;
+use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\plugin\PluginException;
 use pocketmine\scheduler\Task;
 use pocketmine\utils\TextFormat;
 use xenialdan\apibossbar\DiverseBossBar;
 
-class Loader extends PluginBase implements Listener
-{
+class Loader extends PluginBase implements Listener {
+    
     /** @var DiverseBossBar */
     public $bar;
     public $title = '', $subTitles = [], $changeSpeed = 0, $i = 0;
