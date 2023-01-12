@@ -16,4 +16,4 @@ Poggit download/information:
 [![Poggit-CI](https://poggit.pmmp.io/ci.badge/Ihsan48/BossAnnouncement/BossAnnouncement)](https://poggit.pmmp.io/ci/Ihsan48/BossAnnouncement/BossAnnouncement)
 
 ## Information
-This plugin uses the [apibossbar](https://github.com/thebigsmileXD/apibossbar) virion
+This plugin uses the [apibossbar](https://github.com/thebigsmileXD/apibossbar/tree/PM4) virion
